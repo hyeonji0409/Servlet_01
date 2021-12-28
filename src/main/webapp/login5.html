@@ -3,30 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
-        /* JavaScript 사용 */
-        function fn_falidate(){
-            var frmLogin = document.frmLogin;
-            var id = frmLogin.user_id.value;
-            var pw = frmLogin.user_pw.value;
+    <script type="text/javascript">
+        /* jQuery 사용 */
+        $(document).ready(function(){
+            $('#login').on('click', function(){
+               var id = $('#user_id').value();
+               var pw = $('#user_pw').value();
 
-            if(id == "" || pw == ""){
-                alert("아이디와 비밀번호는 필수입니다.");
-                return false;
-            } else{
-                frmLogin.method = "post";
-                frmLogin.action = "login3";
-                frmLogin.submit();
-            }
-        }
+                if(id == "" || pw == ""){
+                    alert("아이디와 비밀번호는 필수입니다. (5.html)");
+                    return false;
+                } else{
+                    // $('#frmLogin').attr('method', 'post').attr('action', 'login3').submit();
+                    $('#frmLogin').attr({
+                        method: "post",
+                        action: 'login3'
+                    }).submit();
+                }
+            });
+        });
     </script>
 </head>
 <body>
 <form id = "frmLogin" name = "frmLogin">
     아이디  : <input type="text" name="user_id" id="user_id"><br>
     비밀번호: <input type="password" name="user_pw" id="user_pw"><br>
-    <input type="submit" value="로그인">  <input type="reset" value="다시입력">
-    테스트중
+    <input type="submit" id="login" value="로그인">  <input type="reset" value="다시입력">
 </form>
 </body>
 </html>
